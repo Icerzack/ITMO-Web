@@ -7,10 +7,10 @@ $y = (float) $_POST["y"];
 $r = (float) $_POST["r"];
 if (checkData($x, $y, $r)) {
     $y = round($y,2);
-    $coordsStatus = checkCoordinates($x, $newY, $r);
+    $coordsStatus = checkCoordinates($x, $y, $r);
     $currentTime = date("H : i : s");
     $benchmarkTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
-    $benchmarkTime=round($benchmarkTime,7);
+    $benchmarkTime = round($benchmarkTime,7);
     // Добавляем строчку с данными.
     array_push($_SESSION["tableRows"], "<tr>
     <td>$x</td>
