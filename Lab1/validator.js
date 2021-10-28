@@ -16,6 +16,7 @@ window.onload = function () {
             this.style.boxShadow = "0 0 40px 5px #10ddc2";
         }
     }
+
 };
 
 document.getElementById("checkButton").onclick = function () {
@@ -26,7 +27,7 @@ document.getElementById("checkButton").onclick = function () {
           body: "x=" + encodeURIComponent(x) + "&y=" + encodeURIComponent(y) + "&r=" + encodeURIComponent(r) +
               "&timezone=" + encodeURIComponent(Intl.DateTimeFormat().resolvedOptions().timeZone)
       }).then(response => response.text()).then(function (serverAnswer) {
-          document.getElementById("outputContainer").innerHTML = serverAnswer;
+          document.getElementById("tablebody").innerHTML = document.getElementById("tablebody").innerHTML + serverAnswer;
       }).catch(err => createNotification("Ошибка HTTP. Повторите попытку позже. " + err));
   }
 };

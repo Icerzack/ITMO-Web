@@ -5,6 +5,9 @@ date_default_timezone_set("Europe/Moscow");
 $x = (float) $_POST["x"];
 $y = (float) $_POST["y"];
 $r = (float) $_POST["r"];
+if ($x == 0 && $y == 0 && $r == 0){
+
+}
 if (checkData($x, $y, $r)) {
     $y = round($y,2);
     $coordsStatus = checkCoordinates($x, $y, $r);
@@ -12,7 +15,8 @@ if (checkData($x, $y, $r)) {
     $benchmarkTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
     $benchmarkTime = round($benchmarkTime,7);
     // Добавляем строчку с данными.
-    array_push($_SESSION["tableRows"], "<tr>
+    array_push($_SESSION["tableRows"], 
+    "<tr>
     <td>$x</td>
     <td>$y</td>
     <td>$r</td>
@@ -20,17 +24,7 @@ if (checkData($x, $y, $r)) {
     <td>$currentTime</td>
     <td>$benchmarkTime</td>
     </tr>");
-    echo "<table id='outputTable border = '1px solid black''>
-        <tr>
-            <th>X</th>
-            <th>Y</th>
-            <th>R</th>
-            <th>Точка входит в ОДЗ?</th>
-            <th>Текущее время</th>
-            <th>Время скрипта</th>
-        </tr>";
-    foreach ($_SESSION["tableRows"] as $tableRow) echo $tableRow;
-    echo "</table>";
+    echo end($_SESSION['tableRows']);
 } else {
     http_response_code(400);
     return;
