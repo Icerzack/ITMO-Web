@@ -6,8 +6,7 @@ $x = (float) $_POST["x"];
 $y = (float) $_POST["y"];
 $r = (float) $_POST["r"];
 if (checkData($x, $y, $r)) {
-    $yString = (String) $y;
-    $newY = explode(".",$yString)[0];
+    $y = round($y,2);
     $coordsStatus = checkCoordinates($x, $newY, $r);
     $currentTime = date("H : i : s");
     $benchmarkTime = microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"];
