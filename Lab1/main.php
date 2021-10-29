@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru-RU">
     <head>
-        <style type="text/css">
+        <style>
 
           * {
             font-family: "Avenir Next Cyr", Arial, sans-serif;
@@ -37,30 +37,15 @@
             background: #0077c0;
           }
 
-          header {
-            font: #fafafa monospace;
-          }
-
-          #outputContainer {
-            border: red 2px solid;
-          }
-
           table {
             width: 100%;
             border: 1px solid #000;
           }
 
-          th.textes, th.area {
-            width: 25%
-          }
-
-          th.picture {
-            width: 50%; 
-          }
-
           tr > td {
             font-style: normal;
           }
+        
         </style>
         <meta charset="utf-8">
         <meta name="description" content="Лабораторная работа №1.">
@@ -75,7 +60,7 @@
           </div>
       </header>
         <table id="mainTable" class="shaded">
-          <thead><td colspan="5"><h2>Ввод значений</h3></td></thead>
+          <thead>colspan="5">Ввод значений</h3></thead>
           <tbody>
           <tr><td colspan="5"><hr></td></tr>
             <tr>
@@ -128,7 +113,7 @@
             </td>
           </tr>
           </tbody>
-            <table border = 1px solid black id="tablebody">
+            <table id="tablebody">
                  <tr>
                     <th>X</th>
                     <th>Y</th>
