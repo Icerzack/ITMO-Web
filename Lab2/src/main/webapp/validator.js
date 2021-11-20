@@ -15,7 +15,6 @@ document.getElementById("checkButton").onclick = function () {
     }
 };
 
-//Параметр key установливает, тип запроса обработки точки на сервере: "button" - для клика по кнопке, "svg" - для клика по канвасу.
 function sendRequest(key) {
     const keys = ["button", "svg"];
     if (keys.includes(key)) {
@@ -48,7 +47,7 @@ function validateX() {
 }
 
 function validateY() {
-    y = document.querySelector("input[name=Y-input]").value.replace(",", "."); //замена разделителя дробной части числа
+    y = document.querySelector("input[name=Y-input]").value.replace(",", ".");
     if (y === undefined) {
         alert("Y не введён");
         return false;
@@ -62,7 +61,7 @@ function validateY() {
 }
 
 function validateR() {
-    r = document.querySelector("input[name=R-input]").value.replace(",", "."); //замена разделителя дробной части числа
+    r = document.querySelector("input[name=R-input]").value.replace(",", ".");
     if (r === undefined) {
         alert("R не введён");
         return false;
