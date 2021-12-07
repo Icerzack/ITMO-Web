@@ -5,7 +5,7 @@ const svg = document.querySelector("svg");
 document.addEventListener("DOMContentLoaded", () => {
     svg.addEventListener("click", (event) => {
         if (validateR()) {
-            const position = getMousePosition(svg, event);
+            const position = getPosition(svg, event);
             x = position.x;
             y = position.y;
             setPointer(x, y);
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-function getMousePosition(svg, event) {
+function getPosition(svg, event) {
     const rect = svg.getBoundingClientRect();
     return {
         x: event.clientX - rect.left,

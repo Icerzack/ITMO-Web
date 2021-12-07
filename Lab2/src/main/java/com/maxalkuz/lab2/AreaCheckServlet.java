@@ -20,12 +20,18 @@ public class AreaCheckServlet extends HttpServlet {
             getServletContext().setAttribute("tableRows", tableRows);
         }
         double x = Double.parseDouble(req.getParameter("x"));
-        double y = Double.parseDouble(req.getParameter("y"));
-        double r = Double.parseDouble(req.getParameter("r"));
+        String y = req.getParameter("y");
+        String r = req.getParameter("r");
+        if(y.length() >= 6 && y.contains(".")){
+            y = y.substring(0,6);
+        }
+        if(r.length() >= 6 && r.contains(".")){
+            r = r.substring(0,6);
+        }
         String key = req.getParameter("key");
         try (PrintWriter writer = resp.getWriter()) {
-            if (checkData(x, y, r, key)) {
-                tableRows.add(new Point(x, y, r).toHtmlCode());
+            if (checkData(x, Double.parseDouble(y), Double.parseDouble(r), key)) {
+                tableRows.add(new Point(x, Double.parseDouble(y), Double.parseDouble(r)).toHtmlCode());
                 writer.println(tableRows.get(tableRows.size() - 1));
             } else resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
@@ -40,5 +46,8 @@ public class AreaCheckServlet extends HttpServlet {
             return (r > 2 && r < 5);
         }
         else return false;
+    }
+    public static double roundDown6(double d) {
+        return Math.floor(d * 1e6) / 1e6;
     }
 }

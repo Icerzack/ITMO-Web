@@ -15,6 +15,7 @@ document.getElementById("checkButton").onclick = function () {
     }
 };
 
+//Параметр key установливает, тип запроса обработки точки на сервере: "button" - для клика по кнопке, "svg" - для клика по канвасу.
 function sendRequest(key) {
     const keys = ["button", "svg"];
     if (keys.includes(key)) {
@@ -27,8 +28,8 @@ function sendRequest(key) {
 function createRequest(key) {
         let path = 'controller?x='
             + encodeURIComponent(x) + '&y='
-            + encodeURIComponent(y) + '&r='
-            + encodeURIComponent(r) + '&key='
+            + encodeURIComponent(y.substring(0,6)) + '&r='
+            + encodeURIComponent(r.substring(0,6)) + '&key='
             + encodeURIComponent(key);
         let header = new Headers();
         header.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
@@ -47,7 +48,8 @@ function validateX() {
 }
 
 function validateY() {
-    y = document.querySelector("input[name=Y-input]").value.replace(",", ".");
+    y = document.querySelector("input[name=Y-input]").value.replace(",", "."); //замена разделителя дробной части числа
+    y = y.substring(0,6);
     if (y === undefined) {
         alert("Y не введён");
         return false;
@@ -61,7 +63,8 @@ function validateY() {
 }
 
 function validateR() {
-    r = document.querySelector("input[name=R-input]").value.replace(",", ".");
+    r = document.querySelector("input[name=R-input]").value.replace(",", "."); //замена разделителя дробной части числа
+    r = r.substring(0,6)
     if (r === undefined) {
         alert("R не введён");
         return false;
@@ -69,7 +72,7 @@ function validateR() {
         alert("R не число");
         return false;
     } else if (!((r > 2) && (r < 5))) {
-        alert("R не входит в область допустимых значений");
+        alert("R не входит в r допустимых значений");
         return false;
     } else return true;
 }
