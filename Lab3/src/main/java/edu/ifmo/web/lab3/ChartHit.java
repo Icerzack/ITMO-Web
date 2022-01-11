@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ChartHit implements Serializable {
     private double x = 0;
     private double y = 0;
-    private double r = 1;
+    private double r = 2;
 
     public double getX() {
         return x;

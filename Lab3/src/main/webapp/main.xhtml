@@ -44,7 +44,7 @@
                 converterMessage="Y is a number!"
                 maxlength="6"
             >
-                <f:validateLongRange minimum="-2" maximum="2" />
+                <f:validateDoubleRange minimum="-2" maximum="2" />
             </h:inputText>
             <h:message for="y" errorClass="errorMsg" />
         </h:outputLabel>
@@ -59,14 +59,16 @@
                     converterMessage="R is a number!"
                     maxlength="6"
             >
-                <f:validateLongRange minimum="2" maximum="3" />
+                <f:validateDoubleRange minimum="2" maximum="3" />
             </h:inputText>
             <h:message for="r" errorClass="errorMsg" />
         </h:outputLabel>
 
-        <h:commandButton value="submit" action="#{pointHistory.addFromForm}" update="hits">
+        <p:commandButton value="Submit" action="#{pointHistory.addFromForm}" update="hits">
             <f:ajax execute="coordinatesForm" render="hits coordinatesForm" />
-        </h:commandButton>
+        </p:commandButton>
+
+        <p:commandButton ajax="false" id="clear-button" value="Clear" action="#{pointHistory.updateAll}"/>
     </h:form>
 
     <h:form styleClass="hidden" id="chart-form">
@@ -78,7 +80,7 @@
     </h:form>
 
     <footer>
-        <h:link value="Венрунться к часам" outcome="navigate_index" />
+        <h:link value="Вернуться к часам" outcome="navigate_index" />
     </footer>
 
     <h:dataTable id="hits" value="#{pointHistory.hitResultList}" var="pointResults">

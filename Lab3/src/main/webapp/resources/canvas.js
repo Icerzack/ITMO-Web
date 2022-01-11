@@ -52,8 +52,6 @@ function drawAxes() {
     ctx.fillText("X", 190, 1);
     ctx.stroke();
 }
-
-
 function drawArea(radius) {
     ctx.fillStyle = '#8ea1f0';
 
@@ -73,11 +71,6 @@ function drawArea(radius) {
     ctx.arc(0, 0, radius/2, 0, Math.PI / 2)
     ctx.fill();
 }
-
-let radius = 300;
-drawArea(radius)
-drawAxes()
-
 function drawHit(x, y, doesItHit) {
     ctx.beginPath();
     ctx.arc(x, y, 5, 0, 2 * Math.PI, false);
@@ -89,7 +82,9 @@ function drawHit(x, y, doesItHit) {
     ctx.strokeStyle = '#000'
     ctx.stroke()
 }
-
+let radius = 150;
+drawArea(radius)
+drawAxes()
 
 canvas.addEventListener('click', function(event) {
     let canvasX = scaleX * (event.offsetX - shiftX);
@@ -109,19 +104,22 @@ setInterval( function () {
     let rField = document.getElementById("coordinatesForm:r");
 
     kek = (e) => {
-        console.log(e)
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.clearRect(0, 0, -canvas.width, canvas.height);
-        ctx.clearRect(0, 0, -canvas.width, -canvas.height);
-        ctx.clearRect(0, 0, canvas.width, -canvas.height);
-        radius = e.target.value * 75;
-        drawArea(radius)
-        drawAxes()
-        document.getElementById("chart-form:refresh").click();
+        console.log(e.target.value);
+        if(e.target.value<=3 && e.target.value>=2){
+            console.log(e)
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, -canvas.width, canvas.height);
+            ctx.clearRect(0, 0, -canvas.width, -canvas.height);
+            ctx.clearRect(0, 0, canvas.width, -canvas.height);
+            radius = e.target.value * 75;
+            drawArea(radius)
+            drawAxes()
+            document.getElementById("chart-form:refresh").click();
+        }
     };
         rField.addEventListener("input", kek, false);
         rField.addEventListener("keydown", kek);
-},100);
+},1000);
 
 function addHits(hits) {
     for (let hit of hits) {

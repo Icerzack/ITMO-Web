@@ -25,16 +25,26 @@ public class PointHistory implements Serializable {
         pointResultsList = dataBaseManager.getHits();
     }
 
+    public void updateAll(){
+        formhit.setDefaultValues();
+        dataBaseManager.delBase();
+        initializeHits();
+        addStoredHitsToCanvas();
+        formhit.setDefaultValues();
+    }
+
     public List<PointResults> getHitResultList() {
         return pointResultsList;
     }
 
     @Inject FormHit formhit;
     public void addFromForm() {
-        double x = formhit.getX();
-        double y = formhit.getY();
-        double r = formhit.getR();
-        addHits(calculateHit(x,y,r));
+        if(formhit.validateValues()){
+            double x = formhit.getX();
+            double y = formhit.getY();
+            double r = formhit.getR();
+            addHits(calculateHit(x,y,r));
+        }
     }
 
     private PointResults calculateHit(double x, double y, double radius) {
@@ -53,8 +63,10 @@ public class PointHistory implements Serializable {
 
     @Inject ChartHit chartHit;
     public void addFromChart() {
-        PointResults pointResults = calculateHit(chartHit.getX(), chartHit.getY(), chartHit.getR());
-        addHits(pointResults);
+        if(2<=chartHit.getR() && chartHit.getR()<=3){
+            PointResults pointResults = calculateHit(chartHit.getX(), chartHit.getY(), chartHit.getR());
+            addHits(pointResults);
+        }
     }
 
     private void addHits(PointResults hits) {

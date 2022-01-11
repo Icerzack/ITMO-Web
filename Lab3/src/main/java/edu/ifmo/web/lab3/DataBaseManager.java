@@ -37,4 +37,14 @@ public class DataBaseManager implements Serializable {
             return Collections.emptyList();
         }
     }
+    public void delBase(){
+        try {
+            entityManager.getTransaction().begin();
+            Query query = entityManager.createQuery("DELETE FROM PointResults");
+            query.executeUpdate();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        }
+    }
 }

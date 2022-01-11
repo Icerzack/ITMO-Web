@@ -10,9 +10,9 @@ import java.util.stream.Collectors;
 @Named
 @ViewScoped
 public class FormHit implements Serializable {
-    private double x = 0;
-    private double y = 0;
-    private double r = 0;
+    private double x = 1;
+    private double y = 2;
+    private double r = 2;
 
     public double getX() {
         return x;
@@ -32,4 +32,24 @@ public class FormHit implements Serializable {
 
     public void setR(double r){this.r = r;}
 
+    public boolean validateValues(){
+        boolean passed = true;
+
+        if(!(2<=getR() && getR()<=3)){
+            passed = false;
+        }
+        if(!(-2<=getY() && getY()<=2)){
+            passed = false;
+        }
+        if(!(getX()==-2||getX()==-1.5||getX()==-1||getX()==-0.5||getX()==0||getX()==0.5||getX()==1)){
+            passed = false;
+        }
+        return passed;
+    }
+
+    public void setDefaultValues(){
+        setX(1);
+        setY(2);
+        setR(2);
+    }
 }
