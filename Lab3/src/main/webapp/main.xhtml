@@ -44,7 +44,7 @@
                 converterMessage="Y is a number!"
                 maxlength="6"
             >
-                <f:validateDoubleRange minimum="-2" maximum="2" />
+                <f:validateDoubleRange minimum="-3.0001" maximum="2.9999" />
             </h:inputText>
             <h:message for="y" errorClass="errorMsg" />
         </h:outputLabel>
@@ -59,7 +59,7 @@
                     converterMessage="R is a number!"
                     maxlength="6"
             >
-                <f:validateDoubleRange minimum="2" maximum="3" />
+                <f:validateDoubleRange minimum="1.0001" maximum="3.9999" />
             </h:inputText>
             <h:message for="r" errorClass="errorMsg" />
         </h:outputLabel>

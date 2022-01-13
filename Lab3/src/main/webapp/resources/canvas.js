@@ -105,7 +105,7 @@ setInterval( function () {
 
     kek = (e) => {
         console.log(e.target.value);
-        if(e.target.value<=3 && e.target.value>=2){
+        if(e.target.value<=3.9999 && e.target.value>=1.0001){
             console.log(e)
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.clearRect(0, 0, -canvas.width, canvas.height);

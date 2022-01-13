@@ -26,6 +26,7 @@
 #hits th, #hits td {
     min-width: 60px;
     text-align: left;
+    border: 1px solid #000;
 }
 
 .errorMsg {

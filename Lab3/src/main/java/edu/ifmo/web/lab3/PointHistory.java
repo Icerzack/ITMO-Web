@@ -63,7 +63,7 @@ public class PointHistory implements Serializable {
 
     @Inject ChartHit chartHit;
     public void addFromChart() {
-        if(2<=chartHit.getR() && chartHit.getR()<=3){
+        if(1.0001<=formhit.getR() && formhit.getR()<=3.9999){
             PointResults pointResults = calculateHit(chartHit.getX(), chartHit.getY(), chartHit.getR());
             addHits(pointResults);
         }
