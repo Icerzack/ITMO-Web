@@ -100,27 +100,21 @@ canvas.addEventListener('click', function(event) {
     document.getElementById("chart-form:chart-r").value = r.toString();
     document.getElementById("chart-form:submit").click();
 })
-setInterval( function () {
-    let rField = document.getElementById("coordinatesForm:r");
 
-    kek = (e) => {
-        console.log(e.target.value);
-        if(e.target.value<=3.9999 && e.target.value>=1.0001){
-            console.log(e)
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.clearRect(0, 0, -canvas.width, canvas.height);
-            ctx.clearRect(0, 0, -canvas.width, -canvas.height);
-            ctx.clearRect(0, 0, canvas.width, -canvas.height);
-            radius = e.target.value * 75;
-            drawArea(radius)
-            drawAxes()
-            document.getElementById("chart-form:refresh").click();
-        }
-    };
-        rField.addEventListener("input", kek, false);
-        rField.addEventListener("keydown", kek);
-},1000);
-
+function cheburek(){
+    let r = document.getElementById("coordinatesForm:r").value;
+    if(r<=3.9999 && r>=1.0001){
+        console.log(r)
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, -canvas.width, canvas.height);
+        ctx.clearRect(0, 0, -canvas.width, -canvas.height);
+        ctx.clearRect(0, 0, canvas.width, -canvas.height);
+        radius = r * 75;
+        drawArea(radius)
+        drawAxes()
+        document.getElementById("chart-form:refresh").click();
+    }
+}
 function addHits(hits) {
     for (let hit of hits) {
         let ratio = radius / hit.r;
