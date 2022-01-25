@@ -35,10 +35,10 @@ public class FormHit implements Serializable {
     public boolean validateValues(){
         boolean passed = true;
 
-        if(!(1.0001<=getR() && getR()<=2.9999)){
+        if(!(1<getR() && getR()<3)){
             passed = false;
         }
-        if(!(-3.0001<=getY() && getY()<=3.9999)){
+        if(!(-3<getY() && getY()<4)){
             passed = false;
         }
         if(!(getX()==-2||getX()==-1.5||getX()==-1||getX()==-0.5||getX()==0||getX()==0.5||getX()==1)){

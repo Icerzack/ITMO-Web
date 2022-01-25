@@ -67,7 +67,7 @@ public class Controller implements Serializable {
         }
         return -radius/2 <= x && x <= 0 && 0 <= y && y <= radius;
     }
-    
+
     private void addHits(PointEntity hits) {
         if (dataBaseManager.addHits(hits)) {
             pointEntityList.add(hits);
