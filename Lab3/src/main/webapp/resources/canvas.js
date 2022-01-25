@@ -119,9 +119,9 @@ function cheburek(){
 }
 
 function setDefaultV(){
-    document.getElementById("coordinatesForm:x").value = 0;
-    document.getElementById("coordinatesForm:y").value = 0;
-    document.getElementById("coordinatesForm:r").value = 2;
+    document.getElementById("coordinatesForm:x").value = 1;
+    document.getElementById("coordinatesForm:y").value = 2.0;
+    document.getElementById("coordinatesForm:r").value = 2.0;
 }
 
 function addHits(hits) {

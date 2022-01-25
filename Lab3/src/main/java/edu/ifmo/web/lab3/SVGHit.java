@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Named
 @RequestScoped
-public class ChartHit implements Serializable {
+public class SVGHit implements Serializable {
     private double x = 0;
     private double y = 0;
     private double r = 2;

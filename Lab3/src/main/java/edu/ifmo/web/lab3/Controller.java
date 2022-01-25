@@ -4,8 +4,6 @@ import org.primefaces.PrimeFaces;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.component.html.HtmlInputText;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
@@ -15,40 +13,40 @@ import java.util.stream.Collectors;
 
 @Named
 @ApplicationScoped
-public class PointHistory implements Serializable {
+public class Controller implements Serializable {
     @Inject
     DataBaseManager dataBaseManager;
-    private List<PointResults> pointResultsList;
+    private List<PointEntity> pointEntityList;
 
     @PostConstruct
-    public void initializeHits() {
-        pointResultsList = dataBaseManager.getHits();
+    public void initializeAll() {
+        pointEntityList = dataBaseManager.getHits();
     }
 
     public void updateAll(){
         formhit.setDefaultValues();
         dataBaseManager.delBase();
-        initializeHits();
-        addStoredHitsToCanvas();
+        initializeAll();
+        addStoredData();
         formhit.setDefaultValues();
     }
 
-    public List<PointResults> getHitResultList() {
-        return pointResultsList;
+    public List<PointEntity> getResults() {
+        return pointEntityList;
     }
 
     @Inject FormHit formhit;
-    public void addFromForm() {
+    public void formAdding() {
         if(formhit.validateValues()){
             double x = formhit.getX();
             double y = formhit.getY();
             double r = formhit.getR();
-            addHits(calculateHit(x,y,r));
+            addHits(calculate(x,y,r));
         }
     }
 
-    private PointResults calculateHit(double x, double y, double radius) {
-        return new PointResults(x, y, radius, doesItHit(x, y, radius));
+    private PointEntity calculate(double x, double y, double radius) {
+        return new PointEntity(x, y, radius, doesItHit(x, y, radius));
     }
 
     private boolean doesItHit(double x, double y, double radius) {
@@ -61,26 +59,27 @@ public class PointHistory implements Serializable {
         return -radius/2 <= x && x <= 0 && 0 <= y && y <= radius;
     }
 
-    @Inject ChartHit chartHit;
-    public void addFromChart() {
+    @Inject
+    SVGHit SVGHit;
+    public void svgAdding() {
         if(1.0001<=formhit.getR() && formhit.getR()<=3.9999){
-            PointResults pointResults = calculateHit(chartHit.getX(), chartHit.getY(), chartHit.getR());
-            addHits(pointResults);
+            PointEntity pointEntity = calculate(SVGHit.getX(), SVGHit.getY(), SVGHit.getR());
+            addHits(pointEntity);
         }
     }
 
-    private void addHits(PointResults hits) {
+    private void addHits(PointEntity hits) {
         if (dataBaseManager.addHits(hits)) {
-            pointResultsList.add(hits);
+            pointEntityList.add(hits);
             addHitsToCanvas(Collections.singletonList(hits));
         }
     }
 
-    public void addStoredHitsToCanvas() {
-        addHitsToCanvas(pointResultsList);
+    public void addStoredData() {
+        addHitsToCanvas(pointEntityList);
     }
 
-    private void addHitsToCanvas(List<PointResults> hits) {
+    private void addHitsToCanvas(List<PointEntity> hits) {
         String json = hits.stream()
             .map(hit -> "{" +
                 " x: " + hit.getX() + "," +

@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class PointResults implements Serializable {
+public class PointEntity implements Serializable {
     @Id
     @GeneratedValue
     private Long Id;
@@ -16,14 +16,14 @@ public class PointResults implements Serializable {
     private double r;
     private boolean doesHit;
 
-    public PointResults(double x, double y, double r, boolean doesHit) {
+    public PointEntity(double x, double y, double r, boolean doesHit) {
         this.x = x;
         this.y = y;
         this.r = r;
         this.doesHit = doesHit;
     }
 
-    public PointResults() {
+    public PointEntity() {
 
     }
 

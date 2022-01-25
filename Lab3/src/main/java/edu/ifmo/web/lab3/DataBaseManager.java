@@ -13,11 +13,11 @@ public class DataBaseManager implements Serializable {
     private final EntityManagerFactory factory = Persistence.createEntityManagerFactory("points");
     private final EntityManager entityManager = factory.createEntityManager();
 
-    public boolean addHits(PointResults pointResults) {
+    public boolean addHits(PointEntity pointEntity) {
         EntityTransaction transaction = entityManager.getTransaction();
         try {
             transaction.begin();
-            entityManager.persist(pointResults);
+            entityManager.persist(pointEntity);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -27,10 +27,10 @@ public class DataBaseManager implements Serializable {
         }
     }
 
-    public List<PointResults> getHits() {
+    public List<PointEntity> getHits() {
         try {
             return entityManager
-                .createQuery("SELECT h FROM PointResults h", PointResults.class)
+                .createQuery("SELECT h FROM PointEntity h", PointEntity.class)
                 .getResultList();
         } catch (Exception e) {
             System.err.println("Unable to get data from DB: " + e.getMessage());
@@ -40,7 +40,7 @@ public class DataBaseManager implements Serializable {
     public void delBase(){
         try {
             entityManager.getTransaction().begin();
-            Query query = entityManager.createQuery("DELETE FROM PointResults");
+            Query query = entityManager.createQuery("DELETE FROM PointEntity");
             query.executeUpdate();
             entityManager.getTransaction().commit();
         } catch (Exception e) {

@@ -17,7 +17,7 @@
 <h:body>
     <canvas id="area" />
     <f:metadata>
-        <f:event type="preRenderView" listener="#{pointHistory.addStoredHitsToCanvas}"/>
+        <f:event type="preRenderView" listener="#{controller.addStoredData}"/>
     </f:metadata>
 
     <h:form id="coordinatesForm" class="coordinates">
@@ -61,43 +61,43 @@
             <h:message for="r" errorClass="errorMsg" />
         </h:outputLabel>
 
-        <p:commandButton value="Submit" action="#{pointHistory.addFromForm}" update="hits">
+        <p:commandButton value="Submit" action="#{controller.formAdding}" update="hits">
             <f:ajax execute="coordinatesForm" render="hits coordinatesForm" />
         </p:commandButton>
 
-        <p:commandButton ajax="false" id="clear-button" value="Clear" onclick="setDefaultV()" action="#{pointHistory.updateAll}">
+        <p:commandButton ajax="false" id="clear-button" value="Clear" onclick="setDefaultV()" action="#{controller.updateAll}">
         </p:commandButton>
 
     </h:form>
 
     <h:form styleClass="hidden" id="chart-form">
-        <h:inputText id="chart-x" value="#{chartHit.x}" required="true"/>
-        <h:inputText id="chart-y" value="#{chartHit.y}" required="true"/>
-        <h:inputText id="chart-r" value="#{chartHit.r}" required="true"/>
-        <p:commandButton id="refresh" value="submit" action="#{pointHistory.addStoredHitsToCanvas}"/>
-        <p:commandButton id="submit" value="submit" action="#{pointHistory.addFromChart}" update="hits"/>
+        <h:inputText id="chart-x" value="#{sVGHit.x}" required="true"/>
+        <h:inputText id="chart-y" value="#{sVGHit.y}" required="true"/>
+        <h:inputText id="chart-r" value="#{sVGHit.r}" required="true"/>
+        <p:commandButton id="refresh" value="submit" action="#{controller.addStoredData}"/>
+        <p:commandButton id="submit" value="submit" action="#{controller.svgAdding}" update="hits"/>
     </h:form>
 
     <footer>
         <h:link value="Вернуться к часам" outcome="navigate_index" />
     </footer>
 
-    <h:dataTable id="hits" value="#{pointHistory.hitResultList}" var="pointResults">
+    <h:dataTable id="hits" value="#{controller.results}" var="pointEntity">
         <h:column>
             <f:facet name="header">X</f:facet>
-            <h:outputText value="#{pointResults.x}"/>
+            <h:outputText value="#{pointEntity.x}"/>
         </h:column>
         <h:column>
             <f:facet name="header">Y</f:facet>
-            <h:outputText value="#{pointResults.y}"/>
+            <h:outputText value="#{pointEntity.y}"/>
         </h:column>
         <h:column>
             <f:facet name="header">R</f:facet>
-            <h:outputText value="#{pointResults.r}"/>
+            <h:outputText value="#{pointEntity.r}"/>
         </h:column>
         <h:column>
             <f:facet name="header">Hit</f:facet>
-            <h:outputText value="#{pointResults.doesHit}"/>
+            <h:outputText value="#{pointEntity.doesHit}"/>
         </h:column>
     </h:dataTable>
 
