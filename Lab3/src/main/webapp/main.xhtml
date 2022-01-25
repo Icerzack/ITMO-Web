@@ -39,8 +39,6 @@
                 id="y"
                 value="#{formHit.y}"
                 validatorMessage="Y is from -3 to 3!"
-                required="true"
-                requiredMessage="Y is not filled!"
                 converterMessage="Y is a number!"
                 maxlength="6"
             >
@@ -54,8 +52,6 @@
                     id="r"
                     value="#{formHit.r}"
                     validatorMessage="R is from 1 to 4!"
-                    required="true"
-                    requiredMessage="R is not filled!"
                     converterMessage="R is a number!"
                     maxlength="6"
                     onkeyup="cheburek()"
@@ -69,7 +65,10 @@
             <f:ajax execute="coordinatesForm" render="hits coordinatesForm" />
         </p:commandButton>
 
-        <p:commandButton ajax="false" id="clear-button" value="Clear" action="#{pointHistory.updateAll}"/>
+        <p:commandButton ajax="false" id="clear-button" value="Clear" action="#{pointHistory.updateAll}">
+            <f:actionListener binding="#{formHit.setDefaultValues()}" />
+        </p:commandButton>
+
     </h:form>
 
     <h:form styleClass="hidden" id="chart-form">

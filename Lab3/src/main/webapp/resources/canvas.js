@@ -91,14 +91,16 @@ canvas.addEventListener('click', function(event) {
     let canvasY = scaleY * (event.offsetY - shiftY);
 
     let r = document.getElementById("coordinatesForm:r").value;
-    let ratio = r / radius
-    let x = canvasX * ratio;
-    let y = canvasY * ratio;
+    if(r<=3.9999 && r>=1.0001){
+        let ratio = r / radius
+        let x = canvasX * ratio;
+        let y = canvasY * ratio;
 
-    document.getElementById("chart-form:chart-x").value = x.toFixed(2);
-    document.getElementById("chart-form:chart-y").value = y.toFixed(2);
-    document.getElementById("chart-form:chart-r").value = r.toString();
-    document.getElementById("chart-form:submit").click();
+        document.getElementById("chart-form:chart-x").value = x.toFixed(2);
+        document.getElementById("chart-form:chart-y").value = y.toFixed(2);
+        document.getElementById("chart-form:chart-r").value = r.toString();
+        document.getElementById("chart-form:submit").click();
+    }
 })
 
 function cheburek(){

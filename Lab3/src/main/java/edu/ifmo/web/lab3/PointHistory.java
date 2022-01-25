@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Named
-@SessionScoped
+@ApplicationScoped
 public class PointHistory implements Serializable {
     @Inject
     DataBaseManager dataBaseManager;
