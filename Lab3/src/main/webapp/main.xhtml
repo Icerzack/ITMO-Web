@@ -65,8 +65,7 @@
             <f:ajax execute="coordinatesForm" render="hits coordinatesForm" />
         </p:commandButton>
 
-        <p:commandButton ajax="false" id="clear-button" value="Clear" action="#{pointHistory.updateAll}">
-            <f:actionListener binding="#{formHit.setDefaultValues()}" />
+        <p:commandButton ajax="false" id="clear-button" value="Clear" onclick="setDefaultV()" action="#{pointHistory.updateAll}">
         </p:commandButton>
 
     </h:form>

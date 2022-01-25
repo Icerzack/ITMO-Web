@@ -117,6 +117,13 @@ function cheburek(){
         document.getElementById("chart-form:refresh").click();
     }
 }
+
+function setDefaultV(){
+    document.getElementById("coordinatesForm:x").value = 0;
+    document.getElementById("coordinatesForm:y").value = 0;
+    document.getElementById("coordinatesForm:r").value = 2;
+}
+
 function addHits(hits) {
     for (let hit of hits) {
         let ratio = radius / hit.r;
