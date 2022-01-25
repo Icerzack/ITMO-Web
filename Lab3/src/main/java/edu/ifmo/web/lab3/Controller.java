@@ -17,10 +17,17 @@ public class Controller implements Serializable {
     @Inject
     DataBaseManager dataBaseManager;
     private List<PointEntity> pointEntityList;
+    @Inject
+    SVGHit SVGHit;
+    @Inject FormHit formhit;
 
     @PostConstruct
     public void initializeAll() {
         pointEntityList = dataBaseManager.getHits();
+    }
+
+    public List<PointEntity> getResults() {
+        return pointEntityList;
     }
 
     public void updateAll(){
@@ -31,17 +38,19 @@ public class Controller implements Serializable {
         formhit.setDefaultValues();
     }
 
-    public List<PointEntity> getResults() {
-        return pointEntityList;
-    }
-
-    @Inject FormHit formhit;
     public void formAdding() {
         if(formhit.validateValues()){
             double x = formhit.getX();
             double y = formhit.getY();
             double r = formhit.getR();
             addHits(calculate(x,y,r));
+        }
+    }
+
+    public void svgAdding() {
+        if(1.0001<=formhit.getR() && formhit.getR()<=3.9999){
+            PointEntity pointEntity = calculate(SVGHit.getX(), SVGHit.getY(), SVGHit.getR());
+            addHits(pointEntity);
         }
     }
 
@@ -58,16 +67,7 @@ public class Controller implements Serializable {
         }
         return -radius/2 <= x && x <= 0 && 0 <= y && y <= radius;
     }
-
-    @Inject
-    SVGHit SVGHit;
-    public void svgAdding() {
-        if(1.0001<=formhit.getR() && formhit.getR()<=3.9999){
-            PointEntity pointEntity = calculate(SVGHit.getX(), SVGHit.getY(), SVGHit.getR());
-            addHits(pointEntity);
-        }
-    }
-
+    
     private void addHits(PointEntity hits) {
         if (dataBaseManager.addHits(hits)) {
             pointEntityList.add(hits);
