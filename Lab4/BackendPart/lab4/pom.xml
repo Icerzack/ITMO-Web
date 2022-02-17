@@ -8,7 +8,7 @@
         <version>2.6.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.neevin</groupId>
+    <groupId>com</groupId>
     <artifactId>lab4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -17,12 +17,11 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <start-class>com.lab4.Lab4Application</start-class>
+
     </properties>
 
-    <dependencyManagement>
-        <!-- Если две разные зависимости используют одну и ту же библиотеку,
-             то тут можно строго указать какую версию библиотеки использовать -->
-    </dependencyManagement>
+
 
     <dependencies>
         <dependency>

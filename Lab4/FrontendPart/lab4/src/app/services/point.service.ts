@@ -15,7 +15,6 @@ export class PointService{
   }
 
   updatePoints(){
-    // этот метод нужен, чтобы обновить таблицу результатов, если пользователь вышел
     this.points = [];
     this.fetchPoints();
   }
@@ -38,6 +37,11 @@ export class PointService{
         error => {console.log(error)},
         console.log
     );
+  }
+
+  deletePoints(){
+    this.http.delete(`${environment.api}/points`)
+        .subscribe(() => console.log("delete successfull"));
   }
 
   addPoint(p: Point){

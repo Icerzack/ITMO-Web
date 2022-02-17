@@ -4,8 +4,6 @@ import {CanActivate, Router} from "@angular/router";
 
 @Injectable()
 export class AuthGuardService{
-  // Класс не допускает пользователя к страницам, если он не авторизован
-
   constructor(public auth: AuthService, public router: Router) {}
 
   canActivate(): boolean {
@@ -14,7 +12,7 @@ export class AuthGuardService{
       return true;
     }
     console.log("Access denied: not authorized");
-    //this.router.navigate(['/login']);
-    return true;
+    this.router.navigate(['/login']);
+    return false;
   }
 }

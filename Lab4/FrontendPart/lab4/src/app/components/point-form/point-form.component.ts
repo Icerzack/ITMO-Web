@@ -55,6 +55,9 @@ export class PointFormComponent implements OnInit {
     this.x.setValue(1);
     this.y.setValue('');
     this._r.setValue(1);
+    this.pointService.deletePoints();
+    window.location.reload();
+    this.pointService.updatePoints();
   }
 
   validateY() : boolean{
