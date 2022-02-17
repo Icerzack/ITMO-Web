@@ -1,8 +1,7 @@
 package com.lab4.Models;
 
 public enum RoleEnum {
-    USER("user_role"),
-    ADMINISTRATOR("administrator_role");
+    USER("user_role");
 
     private final String name;
 
