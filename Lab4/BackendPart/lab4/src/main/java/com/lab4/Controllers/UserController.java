@@ -1,11 +1,11 @@
 package com.lab4.Controllers;
 
-import com.lab4.repositories.RoleRepository;
+import com.lab4.Repos.RoleRepository;
 import com.lab4.DataClasses.UserData;
 import com.lab4.Authentification.JWTUtils;
-import com.lab4.models.RoleEnum;
-import com.lab4.models.User;
-import com.lab4.services.UserService;
+import com.lab4.Models.RoleEnum;
+import com.lab4.Models.User;
+import com.lab4.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;

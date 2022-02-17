@@ -1,7 +1,7 @@
-package com.lab4.services;
+package com.lab4.Services;
 
-import com.lab4.models.User;
-import com.lab4.repositories.UserRepository;
+import com.lab4.Models.User;
+import com.lab4.Repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

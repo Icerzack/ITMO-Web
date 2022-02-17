@@ -1,7 +1,7 @@
 package com.lab4.Authentification;
 
-import com.lab4.services.CustomUserDetailsService;
-import com.lab4.misc.CustomUserDetails;
+import com.lab4.Services.CustomUserDetailsService;
+import com.lab4.Details.CustomUserDetails;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

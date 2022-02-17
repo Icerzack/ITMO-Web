@@ -1,4 +1,4 @@
-package com.lab4.models;
+package com.lab4.Models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

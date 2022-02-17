@@ -1,11 +1,11 @@
 package com.lab4.Controllers;
 
 import com.lab4.DataClasses.RadiusData;
-import com.lab4.repositories.PointRepository;
+import com.lab4.Repos.PointRepository;
 import com.lab4.DataClasses.PointData;
-import com.lab4.models.Point;
-import com.lab4.models.User;
-import com.lab4.services.UserService;
+import com.lab4.Models.Point;
+import com.lab4.Models.User;
+import com.lab4.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;

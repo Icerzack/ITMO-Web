@@ -1,7 +1,7 @@
-package com.lab4.services;
+package com.lab4.Services;
 
-import com.lab4.misc.CustomUserDetails;
-import com.lab4.models.User;
+import com.lab4.Details.CustomUserDetails;
+import com.lab4.Models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

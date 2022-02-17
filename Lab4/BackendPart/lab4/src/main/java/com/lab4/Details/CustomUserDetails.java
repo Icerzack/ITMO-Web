@@ -1,6 +1,6 @@
-package com.lab4.misc;
+package com.lab4.Details;
 
-import com.lab4.models.User;
+import com.lab4.Models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

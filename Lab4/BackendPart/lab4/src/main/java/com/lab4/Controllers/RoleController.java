@@ -1,8 +1,8 @@
 package com.lab4.Controllers;
 
-import com.lab4.repositories.RoleRepository;
-import com.lab4.models.Role;
-import com.lab4.models.RoleEnum;
+import com.lab4.Repos.RoleRepository;
+import com.lab4.Models.Role;
+import com.lab4.Models.RoleEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
